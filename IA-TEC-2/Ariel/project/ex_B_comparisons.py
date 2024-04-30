@@ -1,3 +1,5 @@
+# Author: A01745446 Sergio Gonzalez
+
 from delta import Compiler, Phase
 
 source = '1 <= 2 == 1 != 0 > 0 < 0 <= 1'

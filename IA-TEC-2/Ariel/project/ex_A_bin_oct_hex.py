@@ -1,3 +1,5 @@
+# Author: A01745446 Sergio Gonzalez
+
 from delta import Compiler, Phase
 
 source = '#o431870'

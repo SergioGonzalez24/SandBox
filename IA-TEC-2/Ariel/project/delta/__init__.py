@@ -1,3 +1,6 @@
+# Autor de Codigo original: Prof. Ariel Ortiz
+# Modificado por: A01745446 Sergio Gonzalez
+
 from enum import Enum
 from os import path
 from arpeggio import visit_parse_tree, NoMatch

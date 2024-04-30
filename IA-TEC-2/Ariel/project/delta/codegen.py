@@ -1,3 +1,6 @@
+# Autor de Codigo original: Prof. Ariel Ortiz
+# Modificado por: A01745446 Sergio Gonzalez
+
 from arpeggio import PTNodeVisitor
 
 
