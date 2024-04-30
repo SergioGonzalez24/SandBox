@@ -1,16 +1,37 @@
 comments = r'[/][/].*|[/][*](.|\n)*?[*][/]'
 identifier = r'[a-zA-Z]\w*'
-program = statement* expression EOF
-statement = declaration / assignment
+program = (statement / expression)* EOF
+
+statement = declaration / assignment / if / while / do
+
 declaration = 'var' decl_variable (',' decl_variable)* ';'
+
 decl_variable = identifier
 assignment = lhs_variable '=' expression ';'
+if = 'if' expression block ('else' 'if' expression block)* ( 'else' block )?
+while = 'while' expression block
+do = 'do' block 'while' expression ';'
+block = '{' statement* '}'
 lhs_variable = identifier
-expression = multiplicative (('+' / '-') multiplicative)*
+
+expression = and ('||' and)*
+
+and = comparison ('&&' comparison)*
+
+comparison = additive (('==' / '!=' / '>=' / '>' / '<=' / '<') additive)*
+
+additive = multiplicative (('+'/'-') multiplicative)*
 multiplicative = unary (('*' / '/' / '%') unary)*
+
 unary = ('+' / '-' / '!')* primary
-primary = decimal / boolean / parenthesis / rhs_variable
+primary = literal / boolean / parenthesis / rhs_variable
+
 decimal = r'\d+'
-boolean = 'true'  / 'false'
+binary_literal = r'#b[0-1]+$'
+octal_literal = r'#o[0-7]+$'
+hexadecimal_literal = r'#x[0-9a-fA-F]+$'
+literal = decimal / binary_literal / octal_literal / hexadecimal_literal
+
+boolean = 'true' / 'false'
 parenthesis = '(' expression ')'
 rhs_variable = identifier
